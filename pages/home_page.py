@@ -1,5 +1,8 @@
+import logging
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
+
+logger = logging.getLogger(__name__)
 
 class HomePage(BasePage):
     # Локаторы для главной страницы
@@ -10,8 +13,9 @@ class HomePage(BasePage):
     def accept_cookies(self):
         try:
             self.click_element(self.COOKIE_BANNER)
-        except:
-            print("Баннер куки не найден или уже закрыт")
+            logger.info("Куки приняты")
+        except Exception as e:
+            logger.warning(f"Баннер куки не найден или уже закрыт: {e}")
 
     def click_header_order_button(self):
         self.click_element(self.HEADER_ORDER_BUTTON)

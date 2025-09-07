@@ -23,13 +23,6 @@ class Users:
         'comment': 'Оставить у двери'
     }
 
-    class Urls:
-        DZEN_URL = "https://dzen.ru/?yredirect=true"
-        QA_SCOOTER_URL = "https://qa-scooter.praktikum-services.ru/"
-        QA_SCOOTER_ORDER_URL = "https://qa-scooter.praktikum-services.ru/order"
-        QA_SCOOTER_STATUS_URL = "https://qa-scooter.praktikum-services.ru/track"
-
-
 faq_data = [
     ("Сколько это стоит? И как оплатить?", "Сутки — 400 рублей. Оплата курьеру — наличными или картой."),
     ("Хочу сразу несколько самокатов! Так можно?",
