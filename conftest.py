@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from urls import Urls
 
+
 @pytest.fixture(scope='function')
 def driver():
     options = Options()

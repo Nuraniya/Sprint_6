@@ -11,6 +11,7 @@ class Users:
         'comment': 'Позвонить за час'
     }
 
+
     user_2 = {
         'name': 'Мария',
         'surname': 'Петрова',

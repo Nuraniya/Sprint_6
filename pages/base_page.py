@@ -13,6 +13,7 @@ class BasePage:
             EC.visibility_of_element_located(locator)
         )
 
+
     @allure.step('Клик по элементу {locator}')
     def click_element(self, locator):
         element = self.wait_for_element(locator)

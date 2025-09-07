@@ -2,7 +2,7 @@ class Urls:
     # Базовый URL
     BASE_URL = "https://qa-scooter.praktikum-services.ru"
 
-    # URL для Dzen
+    #URL для Dzen
     DZEN_URL = "https://dzen.ru/?yredirect=true"
 
     @property

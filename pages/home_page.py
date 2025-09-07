@@ -10,6 +10,7 @@ class HomePage(BasePage):
     MAIN_ORDER_BUTTON = (By.XPATH, "(//button[contains(text(), 'Заказать') and @class='Button_Button__ra12g'])[2]")
     COOKIE_BANNER = (By.XPATH, "//div[contains(@class, 'App_CookieConsent')]//button")
 
+
     def accept_cookies(self):
         try:
             self.click_element(self.COOKIE_BANNER)

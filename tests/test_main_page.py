@@ -49,7 +49,6 @@ class TestMainPage:
             driver.switch_to.window(new_window)
 
         with allure.step('Ждем загрузки страницы Dzen'):
-            # Ждем, пока URL сменится с about:blank на нужный
             urls = Urls()
             WebDriverWait(driver, 15).until(
                 EC.url_contains('dzen.ru')

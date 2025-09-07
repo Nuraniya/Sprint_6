@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 class MainPageLocators:
-    #Кнопки "Заказать"
+    # 2 Кнопки "Заказать"
     ORDER_BUTTON_HEADER = (By.XPATH, "//button[contains(text(), 'Заказать') and @class='Button_Button__ra12g']")
     ORDER_BUTTON_FOOTER = (By.XPATH, "//button[contains(text(), 'Заказать') and @class='Button_Button__ra12g Button_Middle__1CSJM']")
 

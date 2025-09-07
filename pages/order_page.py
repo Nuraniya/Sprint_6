@@ -48,7 +48,7 @@ class OrderPage(BasePage):
 
         self.click_element(period_mapping[user['period']])
 
-        # Выбор цвета
+        #Выбор цвета
         color = user.get('color')
         if color == 'black':
             self.click_element(OrderPageLocators.BLACK_COLOR_CHECKBOX)

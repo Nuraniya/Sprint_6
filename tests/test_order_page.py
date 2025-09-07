@@ -5,6 +5,7 @@ from pages.main_page import MainPage
 from pages.order_page import OrderPage
 from urls import Urls
 
+
 class TestOrderPage:
 
     @allure.title('Заказ через кнопку "Заказать" - {button_type}')
