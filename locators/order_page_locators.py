@@ -24,7 +24,7 @@ class OrderPageLocators:
     ORDER_BUTTON = (By.XPATH,
                     "//button[contains(text(), 'Заказать') and @class='Button_Button__ra12g Button_Middle__1CSJM']")
 
-    # Цвета самоката
+    # Цвет самоката
     BLACK_COLOR_CHECKBOX = (By.ID, "black")
     GREY_COLOR_CHECKBOX = (By.ID, "grey")
 
