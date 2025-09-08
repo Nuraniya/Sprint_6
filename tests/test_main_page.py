@@ -1,11 +1,9 @@
 import pytest
 import allure
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from pages.main_page import MainPage
 from data import faq_data
 from urls import Urls
+
 
 @pytest.mark.usefixtures('driver')
 @allure.feature('Главная страница')
@@ -31,33 +29,35 @@ class TestMainPage:
         main_page = MainPage(driver)
         main_page.accept_cookies()
         main_page.click_scooter_logo()
+
         urls = Urls()
-        assert driver.current_url == urls.MAIN_PAGE
+        current_url = main_page.get_current_url()
+        assert current_url == urls.MAIN_PAGE, f"Ожидался URL: {urls.MAIN_PAGE}, получен: {current_url}"
 
     @allure.title('Проверка перехода на Дзен по логотипу Яндекса')
     def test_yandex_logo_redirect(self, driver):
         main_page = MainPage(driver)
         main_page.accept_cookies()
-        original_window = driver.current_window_handle
+        original_window = main_page.get_current_window_handle()
 
         with allure.step('Кликаем на логотип Яндекса'):
             main_page.click_yandex_logo()
 
         with allure.step('Ждем открытия новой вкладки и переключаемся на нее'):
             main_page.wait_for_new_window(original_window, timeout=10)
-            new_window = [window for window in driver.window_handles if window != original_window][0]
-            driver.switch_to.window(new_window)
-
-        with allure.step('Ждем загрузки страницы Dzen'):
-            urls = Urls()
-            WebDriverWait(driver, 15).until(
-                EC.url_contains('dzen.ru')
-            )
+            window_handles = main_page.get_window_handles()
+            new_window = [window for window in window_handles if window != original_window][0]
+            main_page.switch_to_window(new_window)
 
         with allure.step('Проверяем переход на Dzen'):
-            current_url = driver.current_url
+            main_page.wait_for_url_contains('dzen.ru', timeout=15)
+            current_url = main_page.get_current_url()
             assert 'dzen.ru' in current_url, f"Ожидался переход на Dzen, но текущий URL: {current_url}"
 
         with allure.step('Закрываем вкладку Дзена и возвращаемся обратно'):
-            driver.close()
-            driver.switch_to.window(original_window)
+            main_page.close_current_window()
+            main_page.switch_to_window(original_window)
+
+        # Проверка возврата на исходную страницу
+        final_url = main_page.get_current_url()
+        assert 'qa-scooter' in final_url, f"После закрытия Dzen не вернулись на сайт Самокатов. Текущий URL: {final_url}"

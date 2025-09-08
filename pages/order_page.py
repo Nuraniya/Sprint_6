@@ -67,8 +67,8 @@ class OrderPage(BasePage):
 
     @allure.step('Подтвердить заказ')
     def confirm_order(self):
-        # Ждем и кликаем кнопку подтверждения
-        confirm_button = self.wait_for_element(OrderPageLocators.CONFIRM_BUTTON, timeout=10)
+        # Ждем и кликаем кнопку подтверждения (убрали неиспользуемую переменную)
+        self.wait_for_element(OrderPageLocators.CONFIRM_BUTTON, timeout=10)
         self.click_element(OrderPageLocators.CONFIRM_BUTTON)
 
     @allure.step('Проверить сообщение об успешном заказе')
